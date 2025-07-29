@@ -49,5 +49,42 @@ console.log(product(initialArr2));
 
 //--------------------------------------------------------------------------------------------------------------------------
 
+// Filter the even and odd numbers in the separate arrays from the input array
+// [1,2,3,4,5,6,7,8,9] => [[2,4,6,8], [1,3,5,7,9]]
+let input = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+function evenOdd(input) {
+    return input.reduce((acc, curr) => {
+        if (curr % 2 == 0) {
+            acc[0].push(curr);
+        } else {
+            acc[1].push(curr);
+        }
+        return acc;
+    }, [[], []]);
+}
 
+console.log(evenOdd(input));
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Flatten the initial array. Input array contains the array of array of numbers. The output array should contain individual elements.
+// [[1,2], [3,4], [5,6]] => [1,2,3,4,5,6]
+let inputArr = [[1, 2], [3, 4], [5, 6]];
+
+console.log(inputArr.reduce((acc, curr) => acc.concat(curr), []));
+console.log(inputArr.reduce((acc, curr) => [...acc, ...curr], []));
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Filter the elements of the array whose length matches key value
+// ["ab", "cde", "fgh", "ijkl"] => [ 'cde', 'fgh' ]
+let key = 3;
+let elements = ["ab", "cde", "fgh", "ijkl"];
+
+console.log(elements.filter(str => str.length == 3));
+
+// to check how many elements are of length 3
+console.log(elements.filter(str => str.length == 3).length);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------

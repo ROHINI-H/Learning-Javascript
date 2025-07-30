@@ -88,3 +88,20 @@ console.log(elements.filter(str => str.length == 3));
 console.log(elements.filter(str => str.length == 3).length);
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Return the sum and the average of the grade of the students array where students array is the array of objects.
+let students = [
+    { name: 'Alice', grade: 100 },
+    { name: 'Bob', grade: 80 },
+    { name: 'Charlie', grade: 90 },
+];
+
+function gettotal(students) {
+    let total = students.reduce((acc, curr) => acc + curr.grade, 0);
+    let avg = total / students.length;
+    return { total, avg }
+}
+
+console.log(gettotal(students));
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------

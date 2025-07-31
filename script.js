@@ -105,3 +105,82 @@ function gettotal(students) {
 console.log(gettotal(students));
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// group the array of objects based on the key value
+let people = [
+    { name: 'Aman', city: 'Delhi', age: 20 },
+    { name: 'Karan', city: 'Chennai', age: 30 },
+    { name: 'Shivan', city: 'Delhi', age: 30 },
+    { name: 'Amit', city: 'Chennai', age: 20 },
+];
+
+function filterArray(people, prop) {
+    return people.reduce((acc, curr) => {
+        let key = curr[prop];
+        if (!acc[key]) {
+            acc[key] = [];
+        }
+        acc[key].push(curr);
+        return acc;
+    }, {});
+}
+
+console.log(filterArray(people, 'city'));
+console.log(filterArray(people, 'age'));
+/* Output => 
+{
+  Delhi: [
+    { name: 'Aman', city: 'Delhi', age: 20 },
+    { name: 'Shivan', city: 'Delhi', age: 30 }
+  ],
+  Chennai: [
+    { name: 'Karan', city: 'Chennai', age: 30 },
+    { name: 'Amit', city: 'Chennai', age: 20 }
+  ]
+}
+{
+  '20': [
+    { name: 'Aman', city: 'Delhi', age: 20 },
+    { name: 'Amit', city: 'Chennai', age: 20 }
+  ],
+  '30': [
+    { name: 'Karan', city: 'Chennai', age: 30 },
+    { name: 'Shivan', city: 'Delhi', age: 30 }
+  ]
+}  */
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// group the fruits based on the first letter of the fruitname
+let fruits = ['apple', 'banana', 'cherry', 'blueberry', 'apricot'];
+
+function groupfruits(fruits) {
+    return fruits.reduce((acc, str) => {
+        let key = str.charAt(0);
+        if (!acc[key]) {
+            acc[key] = [];
+        }
+        acc[key].push(str);
+        return acc;
+    }, {});
+}
+
+console.log(groupfruits(fruits));
+/* {
+  a: [ 'apple', 'apricot' ],
+  b: [ 'banana', 'blueberry' ],
+  c: [ 'cherry' ]
+} */
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// create a function that takes any number of arguments and returns their sum
+
+function sum(...args) {
+    return args.reduce((acc, num) => acc + num, 0);
+}
+
+console.log(sum(1, 2, 3));
+console.log(sum(1, 2, 3, 4, 5, 6));
+console.log(sum(1, 2));
+console.log(sum(1, 2, 3, 4));
